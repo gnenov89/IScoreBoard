@@ -28,12 +28,30 @@ class App extends Component {
       }
     ]
   };
+  //preyer id counter
+  prevPlayerId = 4;
 
   handleScoreChange = (index, delta) => {
     this.setState( prevState => ({
       score: prevState.players[index].score += delta
     }));
     // console.log("index:" + index, "delta: " + delta);
+  }
+
+  handleAddPlayer = (name) => {
+    console.log(...this.state.players)
+    this.setState( prevState  => {
+      return {
+      players: [ 
+         ...this.state.players,
+        {
+        name,
+        score: 0,
+        id: this.prevPlayerId += 1
+        }
+      ]
+     };
+    });
   }
   /// Remove player 
   handleRemovePlayer = (id) => {
@@ -64,7 +82,7 @@ class App extends Component {
             removePlayer={this.handleRemovePlayer}           
           />
         )}
-        <AddPlayerForm />
+        <AddPlayerForm addPlayer={this.handleAddPlayer} />
       </div>
     );
   }
