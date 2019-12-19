@@ -35,9 +35,9 @@ class Stopwatch extends Component {
         }
     }
 
-    // handleReset = () => {
-    //     this.setState({ elapsedTime: 0});
-    // }
+    handleReset = () => {
+        this.setState({ elapsedTime: 0});
+    }
 
     render() {
 
